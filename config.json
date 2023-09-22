@@ -1,20 +1,17 @@
 {
     "max_depth": 25,
-    "min_sleep": 3,
-    "max_sleep": 6,
+    "min_sleep": 0,
+    "max_sleep": 2,
     "timeout": false,
     "root_urls": [
-        "http://4chan.org",
         "https://www.reddit.com",
         "https://www.yahoo.com",
         "http://www.cnn.com",
-        "https://pornhub.com",
         "http://www.ebay.com",
         "https://wikipedia.org",
         "https://youtube.com",
         "https://github.com",
-        "https://medium.com",
-        "https://thepiratebay.org"
+        "https://medium.com"
     ],
     "blacklisted_urls": [
         "https://t.co",
