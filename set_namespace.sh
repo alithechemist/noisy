@@ -1,7 +1,9 @@
-#!/bin/bash
-#
-#
 #!/usr/bin/env bash
+
+
+### ORIGINAL WORK:
+### https://gist.github.com/dpino/6c0dca1742093346461e11aa8f608a99
+
 
 # set -x
 
@@ -91,9 +93,12 @@ iptables -A FORWARD -i ${IFACE} -o ${VETH} -j ACCEPT
 iptables -A FORWARD -o ${IFACE} -i ${VETH} -j ACCEPT
 
 # Add custom dns
+# I took the ones to flood here: https://www.techradar.com/news/best-dns-server ahahaha
 mkdir -p /etc/netns/${NS}
 echo 'nameserver 8.8.8.8' > /etc/netns/${NS}/resolv.conf
 echo 'nameserver 1.1.1.1' >> /etc/netns/${NS}/resolv.conf
+echo 'nameserver 9.9.9.9' >> /etc/netns/${NS}/resolv.conf
+echo 'nameserver 208.67.222.222' >> /etc/netns/${NS}/resolv.conf
 
 # Get into namespace
 ip netns exec ${NS} /bin/bash --rcfile <(echo "PS1=\"${NS}> \"")
