@@ -1,0 +1,10 @@
+[Unit]
+Description=Simple random DNS, HTTP/S internet traffic noise generator
+
+[Service]
+User=root
+WorkingDirectory=/opt/noisy
+ExecStart=ip netns exec regular-dns /usr/bin/python3 /home/g/srv/noisy/noisy.py --config /home/g/srv/noisy/config.json
+
+[Install]
+WantedBy=multi-user.target
