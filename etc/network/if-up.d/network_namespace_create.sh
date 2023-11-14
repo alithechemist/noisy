@@ -19,10 +19,10 @@ ip link add veth1 type veth peer name vpeer1
 ip link set vpeer1 netns ${NS}
 ip addr add 10.200.1.1/24 dev veth1
 ip link set veth1 up
-ip netns exec regular-dns ip addr add 10.200.1.2/24 dev vpeer1
-ip netns exec regular-dns ip link set vpeer1 up
-ip netns exec regular-dns ip link set lo up
-ip netns exec regular-dns ip route add default via 10.200.1.1
+ip netns exec ${NS} ip addr add 10.200.1.2/24 dev vpeer1
+ip netns exec ${NS} ip link set vpeer1 up
+ip netns exec ${NS} ip link set lo up
+ip netns exec ${NS} ip route add default via 10.200.1.1
 echo 1 > /proc/sys/net/ipv4/ip_forward
 iptables -P FORWARD DROP
 iptables -F FORWARD
