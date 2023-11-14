@@ -6,6 +6,10 @@ set -x
 NS=regular-dns
 IF=wlp0s20f3
 
+mkdir -p /etc/netns/${NS}
+echo "nameserver 8.8.8.8" > /etc/netns/${NS}/resolv.conf
+echo "nameserver 1.1.1.1" >> /etc/netns/${NS}/resolv.conf
+
 ip netns del ${NS}
 ip link delete veth1
 
